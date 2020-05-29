@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "041aed28-f775-402f-8c8f-cebca11eebc2",
+		"name": "Blogs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add blog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f04b1424-b1f5-460c-a43b-db0e51dd2cf7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : 321,\n\t\"author\" : \"Erwin Driessen\",\n\t\"title\" : \"My first blog\",\n\t\"content\" : \"I have writers block\",\n\t\"date\" : 1590688463\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/blogs/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blogs",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add 2nd blog",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "20c1bfb9-ea33-48e9-a381-e59591e22078",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : 456,\n\t\"author\" : \"Joe Blow\",\n\t\"title\" : \"How to learn Elasticsearch\",\n\t\"content\" : \"This is the best course you'll take on learning Elasticsearch\",\n\t\"date\" : 1590688463\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/blogs/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blogs",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list blogs",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "607d8853-02e4-4745-9c02-abcc4f668d59",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"let jsonData = pm.response.json();",
+							"let firstUser =_.head(jsonData);",
+							"pm.environment.set(\"user_id\", firstUser.id );",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/blogs/list",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blogs",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get blog id 321",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ee381a7c-d056-4128-b784-d059914a214a",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/blogs/321",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blogs",
+						"321"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get blog id 456",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a76154c0-1177-44c6-a681-194a5ccac91f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/blogs/456",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blogs",
+						"456"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add blog error no id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa0c976b-d6bd-4046-aa96-e91ab3f655a5",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"author\" : \"Erwin Driessen\",\n\t\"title\" : \"My first blog\",\n\t\"content\" : \"I have writers block\",\n\t\"date\" : 1590688463\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/blogs/add",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"blogs",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
